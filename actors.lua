@@ -46,7 +46,8 @@ function actor_think_item(a)
 end
 
 function actor_think_droploot(a)
-  actor_spawn_herb({a.x, a.y})
+  local loot =   actor_spawn_herb({a.x, a.y})
+  console_write(a.name .. ' drops ' .. loot.name .. '!')
 end
 
 function actor_check_deleted(a)
@@ -59,6 +60,7 @@ end
 
 function actor_spawn_herb(loc)
   local herb = {
+    name = '[herb]',
     x = loc[1], --location
     y = loc[2],
     b = false, --blocking?
@@ -68,10 +70,12 @@ function actor_spawn_herb(loc)
     del = false --delete next tick?
   }
   add(actors, herb)
+  return herb
 end
 
 function actor_spawn_gem(loc)
   local gem = {
+    name = '[gem]',
     x = loc[1],
     y = loc[2],
     b = false,
@@ -81,19 +85,22 @@ function actor_spawn_gem(loc)
     del = false
   }
   add(actors, gem)
+  return gem
 end
 
 function actor_spawn_dummy()
   local dummy = {
+    name = 'dummy',
     x = p.x+1,
     y = p.y,
     b = true,
     s = {7, 8, 9, 8},
     f = actor_think_droploot,
     t = actor_think_dummy,
-    hp = 10,
+    hp = 3,
     attack = 1,
     del = false
   }
   add(actors, dummy)
+  return dummy
 end
