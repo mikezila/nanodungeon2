@@ -85,5 +85,4 @@ end
 
 function player_actor_interact(actor)
   actor.hp -= p.attack
-  console_write(tostr(p.attack)..' '..tostr(actor.hp))
 end
