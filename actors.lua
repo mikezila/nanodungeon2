@@ -29,20 +29,25 @@ function actor_draw(a)
 end
 
 --simple ai for actors that don't think.
---just check if deleted and nothing else
 function actor_think_dummy(a)
-  actor_check_deleted(a)
+  if actor_check_deleted(a) then return end
+  if a.hp <= 0 then
+    a.f(a)
+    a.del = true
+  end
 end
 
 function actor_think_item(a)
   if actor_check_deleted(a) then return end
   if p.x == a.x and p.y == a.y then
-    a.f()
+    a.f(a)
     a.del = true
   end
 end
 
-function actor_think_droploot(a); end
+function actor_think_droploot(a)
+  actor_spawn_herb({a.x, a.y})
+end
 
 function actor_check_deleted(a)
   if a.del then 
@@ -86,6 +91,8 @@ function actor_spawn_dummy()
     s = {7, 8, 9, 8},
     f = actor_think_droploot,
     t = actor_think_dummy,
+    hp = 10,
+    attack = 1,
     del = false
   }
   add(actors, dummy)

@@ -1,6 +1,7 @@
 function player_setup()
   p = {
     hp = 10,
+    attack = 1,
     cash = 0,
     items = {},
     x = 2,
@@ -52,9 +53,10 @@ function player_check_move(dir)
     return
   end
   
-  if actor_blocking_at(dest) then --blocked by actor?
+  local actor = actor_blocking_at(dest)
+  if actor then --blocked by actor?
     player_bump_animation(dir)
-    console_write("bump!")
+    player_actor_interact(actor)
     return
   end
   
@@ -79,4 +81,9 @@ function player_terrain_interact(loc)
   if fget(hit, 1) then
     gizmos[hit](loc)
   end
+end
+
+function player_actor_interact(actor)
+  actor.hp -= p.attack
+  console_write(tostr(p.attack)..' '..tostr(actor.hp))
 end
