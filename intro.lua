@@ -16,7 +16,7 @@ function intro_update()
   if intro.timeout == 0 then 
     update = game_update
     draw = game_draw
-    intro = nil
+    intro = nil --extreme memory management lmao
     return
   end
   if intro.y < intro.stopy then intro.y +=1 end

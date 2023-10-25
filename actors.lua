@@ -2,6 +2,8 @@ function actor_setup()
   actors = {}
 end
 
+--This function makes me suspicious.
+--It works, but I don't like it.
 function actor_blocking_at(loc)
   local result = nil
   foreach(actors, function(actor)
@@ -20,6 +22,10 @@ function actor_draw_all()
   foreach(actors, actor_draw)
 end
 
+--Probably don't need this if we're just calling the 
+--actor's own AI function, but leaving it for now
+--just in case we need to do something with all actors
+--and don't want to bloat the AI functions.
 function actor_update(a)
   a.t(a)
 end
@@ -37,6 +43,12 @@ function actor_think_dummy(a)
   end
 end
 
+--This function isn't clear at all, but what it does
+--is check if we're on the same tile as the player and
+--if we are call our activation function and then delete
+--ourselves. This lets items check if they're picked up
+--and saves us from having to query the actor list to find
+--items that are on the player's current tile.
 function actor_think_item(a)
   if actor_check_deleted(a) then return end
   if p.x == a.x and p.y == a.y then
@@ -58,6 +70,11 @@ function actor_check_deleted(a)
   return false
 end
 
+--Actors that block are considered monsters that we will
+--attack, actors that don't block are considered items.
+--This is a foolproof system that will surely never cause
+--any edge cases to arrise that make me have to overhaul
+--the whole damn actor system. Surely.
 function actor_spawn_herb(loc)
   local herb = {
     name = '[herb]',
