@@ -42,3 +42,15 @@ function util_rndi(lower, upper)
   local range = (upper - lower) + 1
   return flr(rnd(range) + lower)
 end
+
+function util_string_width(str)
+  return #str * 4
+end
+
+--todo: not implemented
+function util_string_flow(str, width)
+  width = width or 128
+  local lines = {str}
+
+  return lines
+end
