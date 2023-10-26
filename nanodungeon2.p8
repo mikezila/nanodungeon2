@@ -11,6 +11,7 @@ __lua__
 #include player.lua
 #include actors.lua
 #include items.lua
+#include camera.lua
 #include intro.lua
 #include juice.lua
 __gfx__

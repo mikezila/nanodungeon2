@@ -5,6 +5,7 @@ function _init()
   console_setup()
   player_setup()
   actor_setup()
+  camera_setup()
   item_setup()
   juice_setup()
   update = intro_update

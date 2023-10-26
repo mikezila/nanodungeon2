@@ -13,7 +13,10 @@ end
 --a tick counter at a chosen speed. For example if
 --called with (3, 15) you'll get a sequence 1 2 3
 --with the number advancing ever 15 ticks before it
---wraps around.
+--wraps around. Jankiness could happen when the timer
+--wraps around but that's a bridge we'll cross when
+--we come to it. And by cross I mean pretend it
+--doesn't exist.
 function util_tick(steps, speed)
   local speed = speed or 15
   return flr( t / 15 ) % steps + 1
@@ -52,4 +55,10 @@ function util_string_flow(str, width)
   local lines = {str}
 
   return lines
+end
+
+function util_find_camera(x, y)
+  local cx = (x \ 16) * 128
+  local cy = (y \ 16) * 128
+  return cx, cy
 end
