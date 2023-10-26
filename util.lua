@@ -7,7 +7,6 @@ function util_setup()
   --but you're not the boss of me so just handle it
   --yourself and don't forget dumbo.
   vector = {{-1,0}, {1,0}, {0,-1}, {0,1}}
-  pi = 3.14
 end
 
 --This uses the global tick timer, 't' to provide

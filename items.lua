@@ -1,3 +1,9 @@
+--These are not actually items, as real items are actors.
+--These are interactable terrain blocks placed by the map.
+--The name "item" is leftover from when I was going to...
+--you know what it doesn't matter just they're terrain ok?
+
+--logic based on graphical assets very nice cool
 function item_setup()
   gizmos = {
     [4]=item_box,

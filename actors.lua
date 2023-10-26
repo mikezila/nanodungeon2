@@ -45,7 +45,7 @@ end
 
 --This function isn't clear at all, but what it does
 --is check if we're on the same tile as the player and
---if we are call our activation function and then delete
+--if we are, call our activation function and then delete
 --ourselves. This lets items check if they're picked up
 --and saves us from having to query the actor list to find
 --items that are on the player's current tile.
@@ -74,7 +74,7 @@ end
 --attack, actors that don't block are considered items.
 --This is a foolproof system that will surely never cause
 --any edge cases to arrise that make me have to overhaul
---the whole damn actor system. Surely.
+--the whole actor system. Surely.
 function actor_spawn_herb(loc)
   local herb = {
     name = '[herb]',
